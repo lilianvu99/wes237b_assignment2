@@ -3,7 +3,8 @@ Lilian Vu
 A14491862
 
 CHANGE SETTINGS FOR 2D DCT PROGRAM INSIDE /include/main.h
-	#define MATMULT  //to enable matrix multiplication -- choose either BLOCK or LUT_MULT, not BOTH
+	
+ 	#define MATMULT  //to enable matrix multiplication -- choose either BLOCK or LUT_MULT, not BOTH
 	#define BLOCK    //to enable block matrix multiplication 
 	#define LUT_MULT //to enable matrix multipliation with LUT 
 
@@ -12,6 +13,7 @@ CHANGE SETTINGS FOR 2D DCT PROGRAM INSIDE /include/main.h
 	#define REG      //to revert back to original version of student DCT without LUTs
 
 FILES:
+
 	2d_dct - folder with part 3 and part 4 code
 	2d_dct_BMM.zip - zip folder with settings already configured to run Block Matrix Multiplication
 	2d_dct_LUT.zip - zip file with settings already configured to run LUT for DCT and LUT for Matrix Multiplication
