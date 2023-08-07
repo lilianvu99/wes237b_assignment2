@@ -9,7 +9,7 @@ CXXFLAGS=-O1
 BUILD_DIR := build/
 
 # What binary are we trying to build?
-BIN := vectest
+BIN := dct
 
 # C++ source files
 CXXSRCS := $(wildcard src/*.cxx)

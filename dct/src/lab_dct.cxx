@@ -1,11 +1,3 @@
-#include <iostream>
-#include <stdio.h>
-#include <math.h>
-
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
 
 // Note! You need to write this one :)
 #include "lab_dct.h"
@@ -43,7 +35,8 @@ Mat lab_dct_naive(Mat input) {
 					// line here given the definition of
 					// the DCT
 
-					value +=
+					value += input_ptr[i * WIDTH + j] * cos(M_PI/((float)HEIGHT)*(i+1./2.)*(float)x) * cos(M_PI/((float)WIDTH)*(j+1./2.)*(float)y);
+
 				}
 			}
 
@@ -56,7 +49,7 @@ Mat lab_dct_naive(Mat input) {
 
 /*****************
   * Ignore this at first!
-  *
+  */
 Mat lab_dct_opt(Mat input){
 	const int HEIGHT = input.rows;
 	const int WIDTH = input.cols;
@@ -97,4 +90,4 @@ Mat lab_dct_opt(Mat input){
 
 	return result;
 }
-*************/
+/*************/

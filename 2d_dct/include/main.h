@@ -24,11 +24,23 @@
 
 #include <math.h>
 
-//#define WIDTH   64
-//#define HEIGHT  64
+using namespace cv;
+
+//#define WIDTH 64
+//#define HEIGHT 64
+
+#define MATMULT  //to enable matrix multiplication -- choose either BLOCK or LUT_MULT, not BOTH
+#define BLOCK	 //to enable block matrix multiplication 
+//#define LUT_MULT //to enable matrix multipliation with LUT 
+
+//#define CUST_DCT //to enable student DCT -- chose either LUT or REG, not BOTH
+//#define LUT 	   //to enable LUT usage inside student DCT
+//#define REG	   //to revert back to original version of student DCT without LUTs
 
 /* student DCT */
-cv::Mat student_dct(cv::Mat input);
+Mat student_dct(Mat input);
 void initDCT(int WIDTH, int HEIGHT);
-
+Mat mat_mult(Mat input1, Mat input2);
+Mat block_mat_mult(Mat input1, Mat input2);
+Mat lilian_matmult(Mat input);
 #endif /* main_h */

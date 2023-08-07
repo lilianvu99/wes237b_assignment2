@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
+#include "lab_dct.h"
+#include <chrono>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
@@ -9,9 +11,12 @@
 
 using namespace std;
 using namespace cv;
+using namespace std::chrono;
 
 int main(int argc, const char * argv[]) {
 	// Read the mode 
+	auto before = high_resolution_clock::now();
+	
 	int mode = std::stoi(argv[1]);
 
 	Mat image;
@@ -37,24 +42,28 @@ int main(int argc, const char * argv[]) {
 	//OpenCV DCT function call
 	if (mode == 1){
 		Mat dct_cv;
+		cout << "Open CV DCT\n";
 		dct(gray, dct_cv);
 #ifndef __arm__
-		imshow("DCT", dct_cv);
+		imshow("Open CV DCT", dct_cv);
 #else
 		dct_cv.convertTo(dct_cv, CV_8UC1, 255.0);
 		bool wrote = imwrite("opencv_dct.tif", dct_cv);
 		if (wrote){
 			cout << "Wrote opencv_dct.tif" << endl;
 		}
+		auto duration1 = duration_cast<microseconds>(high_resolution_clock::now() - before);
+		cout << "It took " << duration1.count() << "s" << endl;
 #endif
 	}
 
 	// Naive DCT
 	else if (mode == 2){
 		Mat dct_lab;
-		/************* TODO!
+		//************* TODO!
+		cout << "Custom Naive\n";
 		dct_lab = lab_dct_naive(gray);
-		*******************/
+		//*******************/
 #ifndef __arm__
 		imshow("DCT Lab Naive", dct_lab);
 #else
@@ -64,14 +73,18 @@ int main(int argc, const char * argv[]) {
 			cout << "Wrote dct_lab_naive.tif" << endl;
 		}
 #endif
+		auto duration2 = duration_cast<microseconds>(high_resolution_clock::now() - before);
+                cout << "It took " << duration2.count() << "s" << endl;
+
 	}
 
 	// Optimized DCT
 	else if (mode == 3){
 		Mat dct_lab_opt;
-		/************* TODO!
+		//************* TODO!
+		cout << "Optimized\n";
 		dct_lab_opt = lab_dct_opt(gray);
-		*******************/
+		//*******************/
 #ifndef __arm__
 		imshow("DCT Lab Opt", dct_lab_opt);
 #else
@@ -81,6 +94,9 @@ int main(int argc, const char * argv[]) {
 			cout << "Wrote dct_lab_opt.tif" << endl;
 		}
 #endif
+		auto duration3 = duration_cast<microseconds>(high_resolution_clock::now() - before);
+                cout << "It took " << duration3.count() << "s" << endl;
+
 	}
 
 	else {
