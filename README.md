@@ -20,8 +20,6 @@ FILES:
 	2d_dct_regular.zip - zip file with settings to run naive matrix multiplication and regulat student DCT before any modifications
 	dct - folder with part 2 code
 	lab_pynq_basics - folder with part 1 code
- 
 	README.md - this file lol
- 
 	Vu_Lilian_WES237B_Assignment2.pdf - Analysis PDF on deliverables and screenshots of output
 
